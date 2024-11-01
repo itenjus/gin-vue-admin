@@ -74,7 +74,7 @@ email:
 system:
     env: local # 修改为public可以关闭路由日志输出
     addr: 8888
-    db-type: mysql
+    db-type: pgsql
     oss-type: local # 控制oss选择走本地还是 七牛等其他仓 自行增加其他oss仓可以在 server/utils/upload/upload.go 中 NewOss函数配置
     use-redis: false # 使用redis
     use-mongo: false     # 使用mongo
@@ -113,15 +113,18 @@ mysql:
 # pgsql connect configuration
 # 未初始化之前请勿手动修改数据库信息！！！如果一定要手动初始化请看（https://gin-vue-admin.com/docs/first_master）
 pgsql:
-    path: ""
-    port: ""
-    config: ""
-    db-name: ""
-    username: ""
-    password: ""
+    prefix: ""
+    port: "30587"
+    config: sslmode=disable TimeZone=Asia/Shanghai
+    db-name: isecs
+    username: isec
+    password: 3e@JUrML7s^#~T42F
+    path: 165.154.197.181
+    engine: ""
+    log-mode: error
     max-idle-conns: 10
     max-open-conns: 100
-    log-mode: ""
+    singular: false
     log-zap: false
 oracle:
     path: ""
@@ -182,7 +185,7 @@ autocode:
     root: "" # root 自动适配项目根目录, 请不要手动配置,他会在项目加载的时候识别出根路径
     server: server
     module: 'github.com/flipped-aurora/gin-vue-admin/server'
-    ai-path: ""  # AI服务路径
+    ai-path: "https://ai.gin-vue-admin.com/{FUNC}/itenjus/8365af47-16cb-4db4-8ddd-97e141007713"  # AI服务路径
 
 # qiniu configuration (请自行七牛申请对应的 公钥 私钥 bucket 和 域名地址)
 qiniu:
